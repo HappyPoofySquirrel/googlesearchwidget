@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.widget.LinearLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.guyverhopkins.searchresults.R
+import com.guyverhopkins.searchresults.core.googlesearch.GoogleSearcherFactory
 
 /**
  * created by ghopkins 3/19/2019.
@@ -30,5 +31,8 @@ class SearchResultLayout : LinearLayout {
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.SearchResult)
         maxResultCount = typedArray.getInt(R.styleable.SearchResult_max_search_results, 5)
         typedArray.recycle()
+
+        val googleSearcher = GoogleSearcherFactory.build(context)
+
     }
 }

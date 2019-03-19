@@ -1,4 +1,4 @@
-package com.guyverhopkins.searchresults.core
+package com.guyverhopkins.searchresults.core.googlesearch
 
 /**
  * created by ghopkins 3/19/2019.

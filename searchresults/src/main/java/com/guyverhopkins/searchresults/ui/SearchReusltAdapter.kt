@@ -4,11 +4,12 @@ import android.graphics.Paint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.paging.PagedListAdapter
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.guyverhopkins.searchresults.R
-import com.guyverhopkins.searchresults.core.SearchResultResponse
-import android.widget.TextView
+import com.guyverhopkins.searchresults.core.googlesearch.SearchResultResponse
 
 
 /**
@@ -32,5 +33,15 @@ class SearchReusltAdapter :
         var tvUrl: TextView = itemView.findViewById(R.id.tv_url_search_result_item)
         var ivImage: TextView = itemView.findViewById(R.id.iv_search_result_item)
         var tvDescripion: TextView = itemView.findViewById(R.id.tv_description_search_result_item)
+    }
+}
+
+class SearchResultDiffCallback : DiffUtil.ItemCallback<SearchResultResponse>() {
+    override fun areContentsTheSame(oldItem: SearchResultResponse, newItem: SearchResultResponse): Boolean {
+        return oldItem == newItem
+    }
+
+    override fun areItemsTheSame(oldItem: SearchResultResponse, newItem: SearchResultResponse): Boolean {
+        return oldItem.id == newItem.id
     }
 }
