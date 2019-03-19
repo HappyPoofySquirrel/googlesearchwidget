@@ -10,7 +10,7 @@ import com.guyverhopkins.searchresults.R
 /**
  * created by ghopkins 3/19/2019.
  */
-class SearchResults : LinearLayout {
+class SearchResultLayout : LinearLayout {
 
     private var maxResultCount = 0
 
@@ -24,11 +24,11 @@ class SearchResults : LinearLayout {
 
     private fun init(attrs: AttributeSet) {
         val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        val view = inflater.inflate(R.layout.search_results, this)
+        val view = inflater.inflate(R.layout.search_result, this)
         rvSearchResults = view.findViewById(R.id.rv_search_results)
 
-        val typedArray = context.obtainStyledAttributes(attrs, R.styleable.SearchResults)
-        maxResultCount = typedArray.getInt(R.styleable.SearchResults_max_search_results, 5)
+        val typedArray = context.obtainStyledAttributes(attrs, R.styleable.SearchResult)
+        maxResultCount = typedArray.getInt(R.styleable.SearchResult_max_search_results, 5)
         typedArray.recycle()
     }
 }
