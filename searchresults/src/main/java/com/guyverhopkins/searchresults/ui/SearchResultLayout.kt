@@ -4,7 +4,6 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.LinearLayout
-import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.RecyclerView
 import com.guyverhopkins.searchresults.R
 import com.guyverhopkins.searchresults.core.googlesearch.GoogleSearcherFactory
@@ -18,7 +17,6 @@ class SearchResultLayout : LinearLayout {
 
     private lateinit var rvSearchResults: RecyclerView
 
-    private lateinit var viewModel: SearchResultViewModel
     constructor(context: Context) : super(context)
 
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
@@ -35,8 +33,6 @@ class SearchResultLayout : LinearLayout {
         typedArray.recycle()
 
         val googleSearcher = GoogleSearcherFactory.build(context)
-
-        viewModel = ViewModelProviders.of(this, SearchResultViewModelFactory(googleSearcher))
     }
 }
 
