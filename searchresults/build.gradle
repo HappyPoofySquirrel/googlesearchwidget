@@ -33,6 +33,10 @@ dependencies {
     androidTestImplementation 'androidx.test:runner:1.1.0-alpha4'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
 
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.0.0'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0-beta01'
+
+
     //Networking
     implementation 'com.squareup.retrofit2:retrofit:2.4.0'
     implementation 'com.squareup.okhttp3:okhttp:3.10.0'

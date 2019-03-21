@@ -19,7 +19,7 @@ interface INetworkManager {
         fun onCancelled()
     }
 
-    fun <T> enqueueCall(call: Call<T>, callback: NetworkCallback, cancelledCallback: CancelledCallback? = null)
+    fun <T> enqueueCall(call: Call<T>, listener: NetworkCallback, cancelledCallback: CancelledCallback? = null)
 
     @Throws(IOException::class)
     fun <T> executeCall(call: Call<T>): Response<*>
