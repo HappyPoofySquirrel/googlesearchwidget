@@ -11,5 +11,9 @@ interface IGoogleSearcher {
 
     fun cancel()
 
-    fun search()
+    fun search(
+        searchTerm: String,
+        page: Int,
+        listener: Listener
+    )
 }

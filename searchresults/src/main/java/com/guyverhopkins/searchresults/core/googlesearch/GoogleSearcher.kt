@@ -23,13 +23,17 @@ private class GoogleSearcher(private val networkManager: NetworkManager, private
     private var call: Call<SearchResultResponse>? = null
     private lateinit var listener: IGoogleSearcher.Listener
 
-    override fun search() {
-        this.listener
+    override fun search(
+        searchTerm: String,
+        page: Int,
+        listener: IGoogleSearcher.Listener
+    ) {
+        this.listener = listener
         val service = requestBuilder.build(Service::class.java)
         call = service.get(
-            "Thunderhead ONE",
-            "004419588007990612847:clcqmqeskvw",
-            "AIzaSyBR81MEqHGHylEQlc_liaf5RBfLuJThNO0"
+            searchTerm,
+            BuildConfig.GOOGLE_SEARCH_ENGINE_ID,
+            BuildConfig.GOOGLE_SEARCH_API_KEY
         )
         networkManager.enqueueCall(call as Call<SearchResultResponse>, this)
     }

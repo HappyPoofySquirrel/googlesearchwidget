@@ -9,8 +9,8 @@ import com.guyverhopkins.searchresults.core.googlesearch.SearchResultResponse
 class SearchResultRepository(private val googleSearcher: IGoogleSearcher) : ISearchResultRepository {
 
 
-    override fun getSearchResults(): SearchResultResponse {
-        return SearchResultResponse()
+    override fun getSearchResults(): SearchResultResponse? {
+        return null
     }
 
 }

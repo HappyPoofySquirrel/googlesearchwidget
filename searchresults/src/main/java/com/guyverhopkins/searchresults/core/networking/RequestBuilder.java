@@ -7,21 +7,14 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RequestBuilder {
     private String baseUrl;
 
-    private OkHttpClient httpClient;
-
     private OkHttpClient.Builder httpClientBuilder;
 
     public RequestBuilder(OkHttpClient httpClient) {
-        this.httpClient = httpClient;
         httpClientBuilder = httpClient.newBuilder();
     }
 
     public OkHttpClient.Builder getHttpClientBuilder() {
         return httpClientBuilder;
-    }
-
-    public void set(OkHttpClient.Builder builder) {
-        httpClientBuilder = builder;
     }
 
     public RequestBuilder baseurl(String baseUrl) {
