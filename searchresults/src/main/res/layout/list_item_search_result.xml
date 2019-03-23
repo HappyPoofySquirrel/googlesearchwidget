@@ -5,12 +5,8 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_common_normal"
-        android:layout_marginEnd="@dimen/margin_common_normal"
-        android:layout_marginBottom="@dimen/margin_common_small"
-        android:layout_marginTop="@dimen/margin_common_small"
-        app:cardCornerRadius="5dp"
-        android:orientation="vertical">
+        app:cardCornerRadius="@dimen/search_result_list_item_cardview_radius"
+        style="@style/search_result_list_item_cardview">
 
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -21,29 +17,25 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/tv_title_search_result_item"
-                android:textColor="@android:color/holo_blue_dark"
+                style="@style/search_result_list_item_title"
                 tools:text="Thunderhead - Understand Intent-Driven"
                 app:layout_constraintTop_toTopOf="parent"
-                android:ellipsize="end"
-                android:maxLines="1"
                 app:layout_constraintStart_toStartOf="parent"/>
 
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/tv_url_search_result_item"
-                android:textColor="@android:color/holo_green_light"
                 tools:text="https://www.thunderhead.com/"
-                android:ellipsize="end"
-                android:maxLines="1"
+                style="@style/search_result_list_item_url"
                 app:layout_constraintTop_toBottomOf="@+id/tv_title_search_result_item"
                 app:layout_constraintStart_toStartOf="parent"/>
 
         <View
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
+                android:layout_height="@dimen/view_seperator_height"
                 android:id="@+id/v_seperator"
-                android:background="@color/backgroundAlt"
+                android:background="@color/seperatorColor"
                 app:layout_constraintTop_toBottomOf="@id/tv_url_search_result_item"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
