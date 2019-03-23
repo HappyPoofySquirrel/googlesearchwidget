@@ -1,4 +1,4 @@
-package com.guyverhopkins.searchresults.core
+package com.guyverhopkins.searchresults.core.common
 
 import android.os.Build
 import android.text.Html

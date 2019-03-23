@@ -48,7 +48,7 @@ class SearchResultLayout : LinearLayout, ISearchResultContract.View, LoadMoreBut
 
     override fun hideLoading() {
         val adapter = rvSearchResults.adapter as SearchResultAdapter
-        adapter.hideLoading()
+        adapter.hideLoading() //todo this is not working if the request errors out
         adapter.notifyItemChanged(adapter.itemCount)
     }
 
@@ -92,6 +92,10 @@ class SearchResultLayout : LinearLayout, ISearchResultContract.View, LoadMoreBut
 
     override fun onLoadMorePressed() {
         presenter.onNextPage()
+    }
+
+    fun attachListener(listener: SearchResultErrorMessageListener) {
+        this.listener = listener
     }
 
 }

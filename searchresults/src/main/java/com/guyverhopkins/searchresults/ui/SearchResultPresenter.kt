@@ -73,7 +73,10 @@ class SearchResultPresenter(
 
     override fun onGetSearchResultError(networkError: NetworkError) {
         isLoading = false
-        view?.hideLoading()
-        view?.showMessage(R.string.error_search_results)
+        view?.let {
+            it.hideLoading()
+            it.hideShowMoreButton()
+            it.showMessage(R.string.error_search_results)
+        }
     }
 }

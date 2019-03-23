@@ -10,7 +10,7 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.guyverhopkins.searchresults.R
-import com.guyverhopkins.searchresults.core.fromHtml
+import com.guyverhopkins.searchresults.core.common.fromHtml
 import com.guyverhopkins.searchresults.core.googlesearch.SearchResultItem
 import com.squareup.picasso.Picasso
 
