@@ -79,7 +79,7 @@ class SearchResultAdapter(private val loadMoreListener: LoadMoreButtonListener) 
     override fun getItemViewType(position: Int): Int {
         return if (position == searchResults.size) {
             R.layout.list_item_search_result_footer
-        } else if(searchResults[position].){
+        } else { //todo setup video result layout
             R.layout.list_item_search_result
         }
     }

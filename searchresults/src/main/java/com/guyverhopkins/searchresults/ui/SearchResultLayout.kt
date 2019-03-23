@@ -19,6 +19,8 @@ class SearchResultLayout : LinearLayout, ISearchResultContract.View, LoadMoreBut
 
     private lateinit var presenter: ISearchResultContract.Presenter
 
+    private var listener: SearchResultErrorMessageListener? = null
+
     constructor(context: Context) : super(context)
 
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
@@ -57,7 +59,7 @@ class SearchResultLayout : LinearLayout, ISearchResultContract.View, LoadMoreBut
     }
 
     override fun showMessage(resourceId: Int) {
-        //todo create listener to show message
+        listener?.onError(context.getString(resourceId))
     }
 
     override fun hideShowMoreButton() {
@@ -92,5 +94,9 @@ class SearchResultLayout : LinearLayout, ISearchResultContract.View, LoadMoreBut
         presenter.onNextPage()
     }
 
+}
+
+interface SearchResultErrorMessageListener {
+    fun onError(message: String)
 }
 

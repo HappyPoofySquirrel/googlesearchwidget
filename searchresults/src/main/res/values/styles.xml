@@ -28,4 +28,9 @@
         <item name="android:layout_marginTop">@dimen/margin_common_small</item>
         <item name="android:orientation">vertical</item>
     </style>
+
+    <style name="search_result_list_item_video_property_header">
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textStyle">bold</item>
+    </style>
 </resources>
