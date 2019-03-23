@@ -1,7 +1,6 @@
 package com.guyverhopkins.searchresults.ui
 
 import android.graphics.Paint
-import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +10,7 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.guyverhopkins.searchresults.R
+import com.guyverhopkins.searchresults.core.fromHtml
 import com.guyverhopkins.searchresults.core.googlesearch.SearchResultItem
 import com.squareup.picasso.Picasso
 
@@ -25,13 +25,15 @@ class SearchResultAdapter(private val loadMoreListener: LoadMoreButtonListener) 
 
     private var isLoading: Boolean = true
 
+    private var shouldShowMoreResultsButton: Boolean = true
+
     override fun getItemCount(): Int {
         return searchResults.size + 1
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchResultViewHolder {
         return SearchResultViewHolder(
-            if (searchResults.size > 0 && viewType == R.layout.list_item_search_result) {
+            if (searchResults.size > 0 && viewType == R.layout.list_item_search_result) { //todo try removing the size check
                 LayoutInflater.from(parent.context).inflate(
                     R.layout.list_item_search_result, parent, false
                 )
@@ -49,20 +51,28 @@ class SearchResultAdapter(private val loadMoreListener: LoadMoreButtonListener) 
                 loadMoreListener.onLoadMorePressed()
             }
 
-            if (isLoading) {
-                holder.pbLoading!!.visibility = View.VISIBLE
-                holder.btnLoadMore!!.visibility = View.GONE
+            if (shouldShowMoreResultsButton) {
+                if (isLoading) {
+                    holder.pbLoading!!.visibility = View.VISIBLE
+                    holder.btnLoadMore!!.visibility = View.GONE
+                } else {
+                    holder.pbLoading!!.visibility = View.GONE
+                    holder.btnLoadMore!!.visibility = View.VISIBLE
+                }
             } else {
                 holder.pbLoading!!.visibility = View.GONE
-                holder.btnLoadMore!!.visibility = View.VISIBLE
+                holder.btnLoadMore!!.visibility = View.GONE
             }
         } else {
             val item = searchResults[position]
             holder.tvTitle!!.paintFlags = holder.tvTitle!!.paintFlags or Paint.UNDERLINE_TEXT_FLAG
-            Picasso.with(holder.ivImage!!.context).load(item.pagemap.cseThumbnail[0].src).into(holder.ivImage)
-            holder.tvTitle!!.text = Html.fromHtml(item.htmlTitle)
-            holder.tvUrl!!.text = Html.fromHtml(item.htmlFormattedUrl)
-            holder.tvDescripion!!.text = Html.fromHtml(item.htmlSnippet)
+            holder.tvTitle!!.text = item.htmlTitle.fromHtml()
+            holder.tvUrl!!.text = item.htmlFormattedUrl.fromHtml()
+            holder.tvDescripion!!.text = item.htmlSnippet.fromHtml()
+            item.pagemap.cseThumbnail.let {
+                holder.ivImage!!.visibility = View.VISIBLE
+                Picasso.with(holder.ivImage!!.context).load(it[0].src).into(holder.ivImage)
+            }
         }
     }
 
@@ -71,7 +81,7 @@ class SearchResultAdapter(private val loadMoreListener: LoadMoreButtonListener) 
     }
 
     fun setItems(searchResults: MutableList<SearchResultItem>) {
-        this.searchResults = searchResults //todo append new items and notify range changed?
+        this.searchResults = searchResults
     }
 
     fun showLoading() {
@@ -80,6 +90,10 @@ class SearchResultAdapter(private val loadMoreListener: LoadMoreButtonListener) 
 
     fun hideLoading() {
         isLoading = false
+    }
+
+    fun hideShowMoreButton() {
+        shouldShowMoreResultsButton = false
     }
 
     inner class SearchResultViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

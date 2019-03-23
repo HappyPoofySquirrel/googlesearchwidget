@@ -23,16 +23,15 @@ private class GoogleSearcher(private val networkManager: NetworkManager, private
     private var call: Call<SearchResultResponse>? = null
     private lateinit var listener: IGoogleSearcher.Listener
 
-    override fun search(
-        searchTerm: String,
-        page: Int,
-        listener: IGoogleSearcher.Listener
-    ) {
+    override fun search(searchTerm: String, page: Int, resultCount: Int, listener: IGoogleSearcher.Listener) {
         this.listener = listener
         val service = requestBuilder.build(Service::class.java)
+
         call = service.get(
             searchTerm,
             BuildConfig.GOOGLE_SEARCH_ENGINE_ID,
+            resultCount,
+            page,
             BuildConfig.GOOGLE_SEARCH_API_KEY
         )
         networkManager.enqueueCall(call as Call<SearchResultResponse>, this)
@@ -56,6 +55,8 @@ private class GoogleSearcher(private val networkManager: NetworkManager, private
         fun get(
             @Query("q") searchTerm: String,
             @Query("cx") searchEngineId: String,
+            @Query("num") resultCount: Int,
+            @Query("start") page: Int,
             @Query("key") apiKey: String
         ): Call<SearchResultResponse>
     }
@@ -67,19 +68,12 @@ class GoogleSearcherFactory {
         @JvmStatic
         fun build(context: Context): IGoogleSearcher {
             return GoogleSearcher(
-                NetworkManager(),
-                createRequestBuilder(
-                    context
-                )
+                NetworkManager(), createRequestBuilder(context)
             )
         }
 
-        private fun createRequestBuilder(
-            context: Context,
-            readTimeout: Long = 100
-        ): RequestBuilder {
-            val requestBuilder =
-                RequestBuilder(
+        private fun createRequestBuilder(context: Context, readTimeout: Long = 100): RequestBuilder {
+            val requestBuilder = RequestBuilder(
                     ClientProvider.getInstance().getHttpClient(
                         context,
                         readTimeout

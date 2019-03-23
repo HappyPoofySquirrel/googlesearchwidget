@@ -3,7 +3,7 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_common_normal"
         android:layout_marginEnd="@dimen/margin_common_normal"
@@ -18,47 +18,59 @@
             android:padding="@dimen/margin_common_normal">
 
         <TextView
-                tools:text="Thunderhead - Understand Intent-Driven"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@android:color/holo_blue_dark"
                 android:id="@+id/tv_title_search_result_item"
+                android:textColor="@android:color/holo_blue_dark"
+                tools:text="Thunderhead - Understand Intent-Driven"
                 app:layout_constraintTop_toTopOf="parent"
+                android:ellipsize="end"
+                android:maxLines="1"
                 app:layout_constraintStart_toStartOf="parent"/>
 
         <TextView
-                tools:text="https://www.thunderhead.com/"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@android:color/holo_green_light"
                 android:id="@+id/tv_url_search_result_item"
+                android:textColor="@android:color/holo_green_light"
+                tools:text="https://www.thunderhead.com/"
+                android:ellipsize="end"
+                android:maxLines="1"
                 app:layout_constraintTop_toBottomOf="@+id/tv_title_search_result_item"
                 app:layout_constraintStart_toStartOf="parent"/>
 
-        <View android:id="@+id/v_seperator" android:layout_width="match_parent" android:layout_height="1dp"
-              android:background="@color/backgroundAlt"
-              app:layout_constraintTop_toBottomOf="@id/tv_url_search_result_item"
-              app:layout_constraintStart_toStartOf="parent"
-              app:layout_constraintEnd_toEndOf="parent"
-              android:layout_marginTop="@dimen/margin_common_normal"/>
+        <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:id="@+id/v_seperator"
+                android:background="@color/backgroundAlt"
+                app:layout_constraintTop_toBottomOf="@id/tv_url_search_result_item"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="@dimen/margin_common_normal"/>
+
 
         <ImageView
+                android:contentDescription="@string/image_thumbnail_content_description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:srcCompat="@tools:sample/avatars"
                 android:id="@+id/iv_search_result_item"
+                tools:srcCompat="@tools:sample/avatars"
+                android:visibility="gone"
                 android:layout_marginTop="@dimen/margin_common_normal"
+                android:layout_marginStart="@dimen/margin_common_normal"
                 app:layout_constraintTop_toBottomOf="@+id/v_seperator"
-                app:layout_constraintStart_toStartOf="parent"/>
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tv_description_search_result_item"/>
+
         <TextView
-                tools:text="THUNDERHEAD NAMED A LEADER IN CUSTOMER JOURNEY ANALYTICS MARKET. Thunderhead's ONE Engagement Hub platform scores among highest"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_common_normal"
                 android:id="@+id/tv_description_search_result_item"
-                android:layout_marginStart="@dimen/margin_common_normal"
-                app:layout_constraintStart_toEndOf="@+id/iv_search_result_item"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="@dimen/margin_common_normal"
+                tools:text="THUNDERHEAD NAMED A LEADER IN CUSTOMER JOURNEY ANALYTICS MARKET. Thunderhead's ONE Engagement Hub platform scores among highest"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/iv_search_result_item"
                 app:layout_constraintTop_toTopOf="@+id/v_seperator"
                 android:ellipsize="end"
                 android:maxLines="5"/>

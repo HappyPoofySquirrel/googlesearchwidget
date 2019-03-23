@@ -6,8 +6,13 @@ interface ISearchResultContract {
     interface View {
         fun hideLoading()
         fun showLoading()
-        fun setSearchResults(searchResults: MutableList<SearchResultItem>)
+        fun setSearchResults(
+            searchResults: MutableList<SearchResultItem>
+        )
+
         fun showMessage(resourceId: Int)
+        fun hideShowMoreButton()
+        fun scrollToTop()
     }
 
     interface Presenter {

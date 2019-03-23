@@ -9,9 +9,10 @@
         tools:context=".MainActivity">
 
     <com.guyverhopkins.searchresults.ui.SearchResultLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
             android:id="@+id/srl_resuls"
+            android:layout_width="0dp"
+            app:layout_constraintWidth_percent="0.7"
+            android:layout_height="match_parent"
             app:max_search_results="14"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"

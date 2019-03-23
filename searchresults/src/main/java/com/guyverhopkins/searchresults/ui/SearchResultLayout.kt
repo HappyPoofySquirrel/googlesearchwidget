@@ -15,8 +15,6 @@ import com.guyverhopkins.searchresults.core.googlesearch.SearchResultItem
  */
 class SearchResultLayout : LinearLayout, ISearchResultContract.View, LoadMoreButtonListener {
 
-    private var maxResultCount = 0
-
     private lateinit var rvSearchResults: RecyclerView
 
     private lateinit var presenter: ISearchResultContract.Presenter
@@ -32,7 +30,7 @@ class SearchResultLayout : LinearLayout, ISearchResultContract.View, LoadMoreBut
         val view = inflater.inflate(R.layout.search_result, this)
 
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.SearchResult)
-        maxResultCount = typedArray.getInt(R.styleable.SearchResult_max_search_results, 5)
+        val maxResultCount = typedArray.getInt(R.styleable.SearchResult_max_search_results, 5)
         typedArray.recycle()
 
         val searchString = "Thunderhead ONE"
@@ -43,18 +41,18 @@ class SearchResultLayout : LinearLayout, ISearchResultContract.View, LoadMoreBut
 
         val adapter = SearchResultAdapter(this)
         rvSearchResults.adapter = adapter
-        presenter = SearchResultPresenter(googleSearcher, searchString)
+        presenter = SearchResultPresenter(googleSearcher, searchString, maxResultCount)
     }
 
     override fun hideLoading() {
         val adapter = rvSearchResults.adapter as SearchResultAdapter
-        adapter.showLoading()
+        adapter.hideLoading()
         adapter.notifyItemChanged(adapter.itemCount)
     }
 
     override fun showLoading() {
         val adapter = rvSearchResults.adapter as SearchResultAdapter
-        adapter.hideLoading()
+        adapter.showLoading()
         adapter.notifyItemChanged(adapter.itemCount)
     }
 
@@ -62,10 +60,22 @@ class SearchResultLayout : LinearLayout, ISearchResultContract.View, LoadMoreBut
         //todo create listener to show message
     }
 
+    override fun hideShowMoreButton() {
+        val adapter = rvSearchResults.adapter as SearchResultAdapter
+        adapter.hideShowMoreButton()
+        adapter.notifyItemChanged(adapter.itemCount)
+    }
+
+    override fun scrollToTop() {
+        rvSearchResults.scrollToPosition(0)
+    }
+
     override fun setSearchResults(searchResults: MutableList<SearchResultItem>) {
         val adapter = rvSearchResults.adapter as SearchResultAdapter
+        val startIndex2 = adapter.itemCount - 1
+
         adapter.setItems(searchResults)
-        adapter.notifyDataSetChanged() //todo notufy range chagned pass in current page
+        adapter.notifyItemRangeInserted(startIndex2, searchResults.size - 1)
     }
 
     override fun onDetachedFromWindow() {

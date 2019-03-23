@@ -3,4 +3,8 @@
     <string name="error_search_results">There was an error with the request. You could have exceeded your limit for the
         day
     </string>
+    <string name="resutls_footer_button_text">More results</string>
+    <string name="image_thumbnail_content_description">Image thumbnail</string>
+    <string name="tv_search_result_video_item_uploaded_header">Uploaded By:</string>
+    <string name="tv_search_result_video_item_posted_header">Posted:</string>
 </resources>

@@ -6,15 +6,17 @@ import com.guyverhopkins.searchresults.core.googlesearch.SearchResultItem
 import com.guyverhopkins.searchresults.core.googlesearch.SearchResultResponse
 import com.guyverhopkins.searchresults.core.networking.NetworkError
 
-class SearchResultPresenter(private val googleSearcher: IGoogleSearcher, private val searchString: String) :
+class SearchResultPresenter(
+    private val googleSearcher: IGoogleSearcher,
+    private val searchString: String,
+    private val maxResultCount: Int
+) :
     ISearchResultContract.Presenter,
     IGoogleSearcher.Listener {
 
-    private var currentPage: Int = 0
+    private var currentPage: Int = 1 //google custom search start with an index of 1
 
     private var isLoading: Boolean = false
-
-    private var endOfList: Boolean = false
 
     private var searchResults: MutableList<SearchResultItem> = mutableListOf()
 
@@ -22,14 +24,7 @@ class SearchResultPresenter(private val googleSearcher: IGoogleSearcher, private
 
     override fun attachView(view: ISearchResultContract.View) {
         this.view = view
-
-        if (searchResults.isNotEmpty()) {
-            view.hideLoading()
-            view.setSearchResults(searchResults)
-        } else {
-            executeQuery()
-        }
-
+        executeQuery()
     }
 
     override fun detachView() {
@@ -41,35 +36,39 @@ class SearchResultPresenter(private val googleSearcher: IGoogleSearcher, private
     }
 
     override fun onNextPage() {
-        if (!endOfList) {
-            if (!isLoading) { //do not remove this check as onScrollListener is called twice because the item range changes therefore calling the listener again
-                currentPage++
-                executeQuery()
-            }
-        } else {
-            view?.hideLoading()
-        }
+        executeQuery()
     }
 
-    private fun executeQuery() {
+    fun executeQuery() { //lets keep this public so we can test it
         isLoading = true
         view?.showLoading()
 
-        googleSearcher.search(searchString, currentPage, this)
+        googleSearcher.search(searchString, currentPage, getRemainingResultCountToRequest(), this)
+    }
+
+    fun getRemainingResultCountToRequest(): Int { //lets keep this public so we can test it
+        val count = maxResultCount - searchResults.count()
+        return if (count >= 10) {
+            10
+        } else {
+            count
+        }
     }
 
     override fun onGetSearchResult(searchResultResponse: SearchResultResponse) {
-        if (searchResultResponse.items.isEmpty()) {
-            endOfList = true
-        } else {
-            searchResults.addAll(searchResultResponse.items)
-            currentPage = searchResultResponse.queries.nextPage[0].startIndex - 1 //todo may need to rid of -1
-            view?.setSearchResults(searchResults)
+        searchResults.addAll(searchResultResponse.items)
+        if (searchResults.size <= 10) { //on first result start at the top
+            view?.scrollToTop()
         }
-
+        currentPage = searchResultResponse.queries.nextPage[0].startIndex
+        view?.setSearchResults(searchResults)
 
         isLoading = false
         view?.hideLoading()
+
+        if (getRemainingResultCountToRequest() == 0) {
+            view?.hideShowMoreButton()
+        }
     }
 
     override fun onGetSearchResultError(networkError: NetworkError) {
