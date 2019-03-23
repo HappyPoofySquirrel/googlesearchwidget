@@ -97,7 +97,6 @@ class SearchResultLayout : LinearLayout, ISearchResultContract.View, LoadMoreBut
     fun attachListener(listener: SearchResultErrorMessageListener) {
         this.listener = listener
     }
-
 }
 
 interface SearchResultErrorMessageListener {

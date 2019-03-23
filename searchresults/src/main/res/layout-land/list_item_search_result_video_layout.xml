@@ -36,18 +36,18 @@
                 android:layout_height="@dimen/view_seperator_height"
                 android:id="@+id/v_seperator"
                 android:background="@color/seperatorColor"
-                app:layout_constraintWidth_percent="0.5"
+                app:layout_constraintWidth_percent="0.7"
                 app:layout_constraintTop_toBottomOf="@id/tv_url_search_result_video_item"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginStart="@dimen/margin_common_normal"
                 android:layout_marginTop="@dimen/margin_common_normal"
+                android:layout_marginStart="@dimen/margin_common_normal"
                 app:layout_constraintStart_toEndOf="@+id/iv_search_result_video_item"/>
 
         <ImageView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/iv_search_result_video_item"
-                app:layout_constraintWidth_percent="0.5"
+                app:layout_constraintWidth_percent="0.3"
                 android:contentDescription="@string/image_thumbnail_content_description"
                 tools:srcCompat="@tools:sample/avatars"
                 android:visibility="visible"
