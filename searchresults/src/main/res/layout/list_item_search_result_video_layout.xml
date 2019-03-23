@@ -5,12 +5,8 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_common_normal"
-        android:layout_marginEnd="@dimen/margin_common_normal"
-        android:layout_marginBottom="@dimen/margin_common_small"
-        android:layout_marginTop="@dimen/margin_common_small"
-        app:cardCornerRadius="5dp"
-        android:orientation="vertical">
+        app:cardCornerRadius="@dimen/search_result_list_item_cardview_radius"
+        style="@style/search_result_list_item_cardview">
 
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -20,36 +16,31 @@
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                style="@style/search_result_list_item_title"
                 android:id="@+id/tv_title_search_result_video_item"
-                android:textColor="@android:color/holo_blue_dark"
                 tools:text="Thunderhead - Understand Intent-Driven"
                 app:layout_constraintTop_toTopOf="parent"
-                android:ellipsize="end"
-                android:maxLines="1"
                 app:layout_constraintStart_toStartOf="parent"/>
 
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/tv_url_search_result_video_item"
-                android:textColor="@android:color/holo_green_light"
+                style="@style/search_result_list_item_url"
                 tools:text="https://www.thunderhead.com/"
-                android:ellipsize="end"
-                android:maxLines="1"
                 app:layout_constraintTop_toBottomOf="@+id/tv_title_search_result_video_item"
                 app:layout_constraintStart_toStartOf="parent"/>
 
         <View
                 android:layout_width="0dp"
-                android:layout_height="1dp"
+                android:layout_height="@dimen/view_seperator_height"
                 android:id="@+id/v_seperator"
-                android:background="@color/backgroundAlt"
+                android:background="@color/seperatorColor"
                 app:layout_constraintWidth_percent="0.5"
                 app:layout_constraintTop_toBottomOf="@id/tv_url_search_result_video_item"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginTop="@dimen/margin_common_normal"
                 app:layout_constraintStart_toEndOf="@+id/iv_search_result_video_item"/>
-
 
         <ImageView
                 android:contentDescription="@string/image_thumbnail_content_description"
@@ -64,42 +55,51 @@
                 app:layout_constraintStart_toStartOf="parent"/>
 
 
-        <TextView
-                android:text="@string/tv_search_result_video_item_uploaded_header"
-                android:textAllCaps="true"
-                android:textStyle="bold"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/v_seperator"
-                app:layout_constraintStart_toStartOf="@id/v_seperator"
-                android:id="@+id/tv_search_result_video_item_uploaded_header"/>
+        <LinearLayout android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:id="@+id/ll1"
+                      android:orientation="vertical"
+                      app:layout_constraintTop_toBottomOf="@id/v_seperator"
+                      app:layout_constraintBottom_toTopOf="@id/ll2"
+                      app:layout_constraintStart_toStartOf="@id/v_seperator">
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_search_result_video_item_uploaded_header"
+                    android:text="@string/tv_search_result_video_item_uploaded_header"
+                    android:textAllCaps="true"
+                    android:textStyle="bold"
+                    app:layout_constraintVertical_chainStyle="spread"/>
 
-        <TextView
-                tools:text="Thunderhead"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/tv_search_result_video_item_uploaded_header"
-                app:layout_constraintStart_toStartOf="@id/v_seperator"
-                android:id="@+id/tv_search_result_video_item_uploaded_value"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_search_result_video_item_uploaded_value"
+                    tools:text="Thunderhead"/>
+        </LinearLayout>
 
-        <TextView
-                android:text="@string/tv_search_result_video_item_posted_header"
-                android:textAllCaps="true"
-                android:textStyle="bold"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/tv_search_result_video_item_uploaded_value"
-                app:layout_constraintBottom_toTopOf="@id/tv_search_result_video_item_posted_value"
-                app:layout_constraintStart_toStartOf="@id/v_seperator"
-                android:id="@+id/tv_search_result_video_item_posted_header"/>
+        <LinearLayout android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:id="@+id/ll2"
+                      android:orientation="vertical"
+                      app:layout_constraintTop_toBottomOf="@id/ll1"
+                      app:layout_constraintBottom_toBottomOf="parent"
+                      app:layout_constraintStart_toStartOf="@id/v_seperator">
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_search_result_video_item_posted_header"
+                    android:text="@string/tv_search_result_video_item_posted_header"
+                    android:textAllCaps="true"
+                    android:textStyle="bold"/>
 
-        <TextView
-                tools:text="Nov 9, 2016"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/tv_search_result_video_item_posted_header"
-                app:layout_constraintStart_toStartOf="@id/v_seperator"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:id="@+id/tv_search_result_video_item_posted_value"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_search_result_video_item_posted_value"
+                    tools:text="Nov 9, 2016"
+                    app:layout_constraintTop_toBottomOf="@id/tv_search_result_video_item_posted_header"
+                    app:layout_constraintStart_toStartOf="@id/v_seperator"/>
+        </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

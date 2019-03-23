@@ -9,7 +9,6 @@
             android:id="@+id/rv_search_results"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="top"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/list_item_search_result"/>
 

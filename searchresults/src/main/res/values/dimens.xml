@@ -7,4 +7,7 @@
     <dimen name="margin_common_xlarge">24dp</dimen>
     <dimen name="margin_common_xxlarge">32dp</dimen>
     <dimen name="margin_common_xxxlarge">56dp</dimen>
+
+    <dimen name="search_result_list_item_cardview_radius">5dp</dimen>
+    <dimen name="view_seperator_height">1dp</dimen>
 </resources>
