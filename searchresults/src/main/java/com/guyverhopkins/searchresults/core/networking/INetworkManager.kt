@@ -6,7 +6,6 @@ import java.io.IOException
 
 /**
  * Makes a network request.
- * Created by jlorett on 9/13/16.
  */
 interface INetworkManager {
     interface NetworkCallback {

@@ -4,8 +4,6 @@ import retrofit2.Response
 
 /**
  * An error response from the network.
- *
- * Created by jlorett on 9/13/16.
  */
 class NetworkError {
     var response: Response<*>? = null

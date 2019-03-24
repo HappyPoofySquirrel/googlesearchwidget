@@ -9,8 +9,6 @@ import java.io.IOException;
 
 /**
  * Log requests using the cURL format.
- * <p>
- * Created 10/8/18
  */
 
 

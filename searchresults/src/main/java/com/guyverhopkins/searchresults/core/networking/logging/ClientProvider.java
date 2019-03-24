@@ -13,7 +13,6 @@ public class ClientProvider {
     private static final int CACHE_SIZE = 1024;
     private static ClientProvider ourInstance = new ClientProvider();
     private static OkHttpClient httpClient;
-    private static int DEFAULT_READ_TIMEOUT = 10;
 
     private static TimeUnit DEFAULT_TIME_UNIT = TimeUnit.SECONDS;
 
@@ -22,17 +21,6 @@ public class ClientProvider {
 
     public static ClientProvider getInstance() {
         return ourInstance;
-    }
-
-    public OkHttpClient getHttpClient(Context context) {
-        if (httpClient == null) {
-            httpClient = new OkHttpClient.Builder()
-                    .cache(new Cache(context.getCacheDir(), CACHE_SIZE))
-                    .readTimeout(DEFAULT_READ_TIMEOUT, DEFAULT_TIME_UNIT)
-                    .build();
-        }
-
-        return httpClient;
     }
 
     public OkHttpClient getHttpClient(Context context, long readTimeout) {

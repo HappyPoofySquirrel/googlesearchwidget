@@ -1,7 +1,6 @@
 # Google Search Results on Android for Thunderhead ONE
 
-----------
-This easy to use library will help you display google search results in your project.
+This easy to use library will help you display google search results for Thunderhead ONE in your project.
 
 # How to use
 
@@ -15,7 +14,7 @@ dependencies {
 }
 ```
 
-add thunderhead_search_results.aar to your modules lib filder
+add thunderhead_search_results.aar to the desired modules lib folder
 
 then add SearchResults to your activity:
 
@@ -23,16 +22,15 @@ then add SearchResults to your activity:
  <com.guyverhopkins.searchresults.ui.SearchResultLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/srl_resuls"
-            app:max_search_results="14"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:max_search_results="14"  />
+```
+  You must specify how many results you would like to receive using the following property
+  ```xml
+  app:max_search_results="14"
 ```
 
-If you would like to listen for error messages you must attach the listener
 
+If you would like to listen for errors please attach a listener in onCreate
 ```
 onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,3 +42,13 @@ onCreate(savedInstanceState: Bundle?) {
     }
 ```
 
+**Custom Colors - colors.xml**
+Simply set/change these colors in your colors.xml resource file
+
+```xml
+    Search results theme colors
+       <color name="searchResultsBackground">#f2f2f2</color>
+```
+----------
+
+If you would like more control over the styling and more colors please specify and i will push updates.

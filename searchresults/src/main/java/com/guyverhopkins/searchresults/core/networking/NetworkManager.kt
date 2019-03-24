@@ -5,9 +5,6 @@ import retrofit2.Callback
 import retrofit2.Response
 import java.io.IOException
 
-/**
- * Created by jlorett on 9/13/16.
- */
 class NetworkManager : INetworkManager {
 
     override fun <T> enqueueCall(

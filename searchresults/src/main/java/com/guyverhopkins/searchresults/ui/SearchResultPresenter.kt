@@ -28,25 +28,25 @@ class SearchResultPresenter(
     }
 
     override fun detachView() {
-        this.view = null
         if (isLoading) {
             googleSearcher.cancel()
             view?.hideLoading()
         }
+        this.view = null
     }
 
     override fun onNextPage() {
         executeQuery()
     }
 
-    fun executeQuery() { //lets keep this public so we can test it
+    private fun executeQuery() {
         isLoading = true
         view?.showLoading()
 
         googleSearcher.search(searchString, currentPage, getRemainingResultCountToRequest(), this)
     }
 
-    fun getRemainingResultCountToRequest(): Int { //lets keep this public so we can test it
+    private fun getRemainingResultCountToRequest(): Int { //10 is the max results that can be returned
         val count = maxResultCount - searchResults.count()
         return if (count >= 10) {
             10
