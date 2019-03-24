@@ -84,7 +84,7 @@ class SearchResultAdapter(private val loadMoreListener: LoadMoreButtonListener) 
                 holder.tvTitle.text = item.htmlTitle.fromHtml()
                 holder.tvUrl.text = item.htmlFormattedUrl.fromHtml()
                 holder.tvDescripion.text = item.htmlSnippet.fromHtml()
-                item.pagemap.cseThumbnail.let {
+                item.pagemap.cseThumbnail?.let {
                     holder.cvImageContainer.visibility = View.VISIBLE
                     Picasso.with(holder.ivImage.context).load(it[0].src).fit().into(holder.ivImage)
                 }
