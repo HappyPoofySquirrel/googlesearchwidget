@@ -61,7 +61,7 @@ data class Pagemap(
     @SerializedName("cse_image")
     val cseImage: List<CseImage>,
     @SerializedName("cse_thumbnail")
-    val cseThumbnail: List<CseThumbnail>,
+    val cseThumbnail: List<CseThumbnail>?,
     @SerializedName("metatags")
     val metatags: List<Metatag>,
     @SerializedName("videoobject")
