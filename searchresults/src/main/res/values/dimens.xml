@@ -12,4 +12,5 @@
     <dimen name="view_seperator_height">1dp</dimen>
     <dimen name="image_thumnail_width">75dp</dimen>
     <dimen name="image_thumnail_height">75dp</dimen>
+    <dimen name="image_container_corner_radius">8dp</dimen>
 </resources>

@@ -50,7 +50,7 @@
                                            app:layout_constraintTop_toBottomOf="@+id/v_seperator"
                                            app:layout_constraintBottom_toBottomOf="parent"
                                            app:layout_constraintEnd_toEndOf="parent"
-                                           app:cardCornerRadius="8dp"
+                                           app:cardCornerRadius="@dimen/image_container_corner_radius"
                                            app:layout_constraintStart_toEndOf="@id/tv_description_search_result_item">
             <ImageView
                     android:contentDescription="@string/image_thumbnail_content_description"
