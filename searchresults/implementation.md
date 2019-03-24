@@ -3,18 +3,42 @@
 This easy to use library will help you display google search results for Thunderhead ONE in your project.  
   
 # How to use  
+ 
+**To include SearchBar to your project:**  
+
+   add this code to the the project level build.gradle file  
   
-**to include SearchBar to your project:**  
-  
+```gradle 
+allprojects{ 
+	repositories {  
+		  flatDir {  
+		    dirs 'libs'  
+		}
+	}  
+}
+```  
+
+add **searchresults-debug.aar** to the app modules lib folder  
+
  add this code to the the app level build.gradle file  
   
 ```gradle  
 dependencies {  
-  
+  implementation(name: 'searchresults-debug', ext: 'aar')
+  //because aar files do not include nested dependencies you must also include
+  implementation 'androidx.cardview:cardview:1.0.0'  
+  implementation 'androidx.constraintlayout:constraintlayout:1.1.3'  
+  implementation 'com.google.android.material:material:1.0.0'
+
+  implementation 'com.squareup.retrofit2:retrofit:2.4.0'  
+  implementation 'com.squareup.okhttp3:okhttp:3.10.0'  
+  implementation 'com.google.code.gson:gson:2.8.2'  
+  implementation 'com.squareup.retrofit2:converter-gson:2.4.0'  
+  implementation 'com.squareup.okio:okio:1.14.0'  
+  implementation "com.squareup.okhttp3:logging-interceptor:3.10.0"  
+  implementation 'com.squareup.picasso:picasso:2.5.2'
 }  
 ```  
-  
-add thunderhead_search_results.aar to the desired modules lib folder  
   
 then add SearchResults to your activity:  
   
@@ -30,6 +54,8 @@ then add SearchResults to your activity:
 ```
 
 
+**Optional**
+----------
 If you would like to listen for errors please attach a listener in onCreate
 ```
 onCreate(savedInstanceState: Bundle?) {  
@@ -47,7 +73,10 @@ Simply set/change these colors in your colors.xml resource file
 
 ```xml
     Search results theme colors
-       <color name="searchResultsBackground">#f2f2f2</color> 
+       <color name="search_result_background_color">reaplce with your value</color>  
+	   <color name="search_result_seperator_color">reaplce with your value</color>  
+	   <color name="search_result_list_item_title_text_color">reaplce with your value</color>  
+	   <color name="search_result_list_item_url_text_color">reaplce with your value</color>
 ```
 ----------
 
