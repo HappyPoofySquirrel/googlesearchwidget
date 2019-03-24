@@ -10,4 +10,6 @@
 
     <dimen name="search_result_list_item_cardview_radius">5dp</dimen>
     <dimen name="view_seperator_height">1dp</dimen>
+    <dimen name="image_thumnail_width">75dp</dimen>
+    <dimen name="image_thumnail_height">75dp</dimen>
 </resources>

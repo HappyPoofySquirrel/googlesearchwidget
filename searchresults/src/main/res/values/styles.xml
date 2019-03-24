@@ -32,5 +32,10 @@
     <style name="search_result_list_item_video_property_header">
         <item name="android:textAllCaps">true</item>
         <item name="android:textStyle">bold</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+    <style name="search_result_list_item_video_property_value">
+        <item name="android:ellipsize">end</item>
+        <item name="android:maxLines">1</item>
     </style>
 </resources>

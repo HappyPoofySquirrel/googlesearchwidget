@@ -41,19 +41,24 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginTop="@dimen/margin_common_normal"/>
 
-
-        <ImageView
-                android:contentDescription="@string/image_thumbnail_content_description"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/iv_search_result_item"
-                tools:srcCompat="@tools:sample/avatars"
-                android:visibility="gone"
-                android:layout_marginTop="@dimen/margin_common_normal"
-                android:layout_marginStart="@dimen/margin_common_normal"
-                app:layout_constraintTop_toBottomOf="@+id/v_seperator"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/tv_description_search_result_item"/>
+        <androidx.cardview.widget.CardView android:layout_width="wrap_content"
+                                           android:layout_height="wrap_content"
+                                           android:id="@+id/cv_search_result_image_container_item"
+                                           android:visibility="gone"
+                                           android:layout_marginTop="@dimen/margin_common_normal"
+                                           android:layout_marginStart="@dimen/margin_common_normal"
+                                           app:layout_constraintTop_toBottomOf="@+id/v_seperator"
+                                           app:layout_constraintBottom_toBottomOf="parent"
+                                           app:layout_constraintEnd_toEndOf="parent"
+                                           app:cardCornerRadius="8dp"
+                                           app:layout_constraintStart_toEndOf="@id/tv_description_search_result_item">
+            <ImageView
+                    android:contentDescription="@string/image_thumbnail_content_description"
+                    android:layout_width="@dimen/image_thumnail_width"
+                    android:layout_height="@dimen/image_thumnail_height"
+                    tools:srcCompat="@tools:sample/avatars"
+                    android:id="@+id/iv_search_result_item"/>
+        </androidx.cardview.widget.CardView>
 
         <TextView
                 android:layout_width="0dp"
@@ -62,7 +67,7 @@
                 android:layout_marginTop="@dimen/margin_common_normal"
                 tools:text="THUNDERHEAD NAMED A LEADER IN CUSTOMER JOURNEY ANALYTICS MARKET. Thunderhead's ONE Engagement Hub platform scores among highest"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/iv_search_result_item"
+                app:layout_constraintEnd_toStartOf="@id/cv_search_result_image_container_item"
                 app:layout_constraintTop_toTopOf="@+id/v_seperator"
                 android:ellipsize="end"
                 android:maxLines="5"/>
