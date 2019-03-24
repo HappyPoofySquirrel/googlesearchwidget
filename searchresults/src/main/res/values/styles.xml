@@ -10,13 +10,13 @@
 
 
     <style name="search_result_list_item_title">
-        <item name="android:textColor">@android:color/holo_blue_dark</item>
+        <item name="android:textColor">@color/search_result_list_item_title_text_color</item>
         <item name="android:ellipsize">end</item>
         <item name="android:maxLines">1</item>
     </style>
 
     <style name="search_result_list_item_url">
-        <item name="android:textColor">@android:color/holo_green_light</item>
+        <item name="android:textColor">@color/search_result_list_item_url_text_color</item>
         <item name="android:ellipsize">end</item>
         <item name="android:maxLines">1</item>
     </style>

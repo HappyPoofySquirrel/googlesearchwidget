@@ -4,7 +4,8 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
 
-    <color name="searchResultsBackground">#f2f2f2</color>
-    <color name="seperatorColor">#f2f2f2</color>
-
+    <color name="search_result_background_color">#f2f2f2</color>
+    <color name="search_result_seperator_color">#f2f2f2</color>
+    <color name="search_result_list_item_title_text_color">@android:color/holo_blue_dark</color>
+    <color name="search_result_list_item_url_text_color">@android:color/holo_green_light</color>
 </resources>
