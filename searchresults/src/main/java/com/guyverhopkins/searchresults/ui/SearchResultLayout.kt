@@ -33,9 +33,8 @@ class SearchResultLayout : LinearLayout, ISearchResultContract.View, LoadMoreBut
 
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.SearchResult)
         val maxResultCount = typedArray.getInt(R.styleable.SearchResult_max_search_results, 5)
+        val searchString = typedArray.getString(R.styleable.SearchResult_search_result_search_string)
         typedArray.recycle()
-
-        val searchString = "Thunderhead ONE"
 
         val googleSearcher = GoogleSearcherFactory.build(context)
 

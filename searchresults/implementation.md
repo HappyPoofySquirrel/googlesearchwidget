@@ -1,6 +1,6 @@
 # Google Search Results on Android for Thunderhead ONE  
   
-This easy to use library will help you display google search results for Thunderhead ONE in your project.  
+This easy to use library will help you display google search results in your project.  
   
 # How to use  
  
@@ -45,12 +45,14 @@ then add SearchResults to your activity:
 ```xml  
  <com.guyverhopkins.searchresults.ui.SearchResultLayout  
             android:layout_width="match_parent"  
-            android:layout_height="match_parent"  
+            android:layout_height="match_parent" 
+            app:search_result_search_string="Thunderhead ONE"
             app:max_search_results="14"  />  
 ```  
-  You must specify how many results you would like to receive using the following property
+  You must specify how many results you would like to receive and the search string using the following properties
   ```xml  
   app:max_search_results="14"
+  app:search_result_search_string="Thunderhead ONE"
 ```
 
 

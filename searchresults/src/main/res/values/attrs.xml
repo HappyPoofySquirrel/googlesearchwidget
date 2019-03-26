@@ -2,5 +2,6 @@
 <resources>
     <declare-styleable name="SearchResult">
         <attr name="max_search_results" format="integer"/>
+        <attr name="search_result_search_string" format="string"/>
     </declare-styleable>
 </resources>
