@@ -109,7 +109,7 @@ class SearchResultAdapter(private val loadMoreListener: LoadMoreButtonListener) 
     override fun getItemViewType(position: Int): Int {
         return when {
             position == searchResults.size -> R.layout.list_item_search_result_footer
-            searchResults[position].pagemap.videoobject != null -> R.layout.list_item_search_result_video
+            searchResults[position].pagemap.videoobject != null -> R.layout.list_item_search_result_video //sometimes article types have this object with no thumbnail or date posted. Detect if video from different property
             else -> R.layout.list_item_search_result
         }
     }

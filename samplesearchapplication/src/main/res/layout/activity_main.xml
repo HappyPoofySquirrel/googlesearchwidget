@@ -13,7 +13,7 @@
             android:layout_height="match_parent"
             android:id="@+id/srl_resuls"
             app:max_search_results="14"
-            app:search_result_search_string="Thunderhead ONE"
+            app:search_result_search_string="Giraffe"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
